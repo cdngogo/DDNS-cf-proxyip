@@ -805,9 +805,9 @@ function parseTarget(input) {
 function createConfig(env, request = null) {
     const config = { ...DEFAULT_CONFIG };
 
-    config.apiKey = env.CF_KEY || '';
-    config.zoneId = env.CF_ZONEID || '';
-    config.authKey = env.AUTH_KEY || '';
+    config.apiKey = env.CF_KEY || DEFAULT_CONFIG.apiKey;
+    config.zoneId = env.CF_ZONEID || DEFAULT_CONFIG.zoneId;
+    config.authKey = env.AUTH_KEY || DEFAULT_CONFIG.authKey;
 
     const domainsInput = env.CF_DOMAIN || '';
     if (domainsInput) {
@@ -819,12 +819,12 @@ function createConfig(env, request = null) {
         config.targets = [{ mode: 'A', domain: '', port: '443', minActive: GLOBAL_SETTINGS.DEFAULT_MIN_ACTIVE }];
     }
 
-    config.tgToken = env.TG_TOKEN || '';
-    config.tgId = env.TG_ID || '';
+    config.tgToken = env.TG_TOKEN || DEFAULT_CONFIG.tgToken;
+    config.tgId = env.TG_ID || DEFAULT_CONFIG.tgId;
     config.checkApi = env.CHECK_API || DEFAULT_CONFIG.checkApi;
-    config.checkApiToken = env.CHECK_API_TOKEN || '';
-    config.checkApiBackup = env.CHECK_API_BACKUP || '';
-    config.checkApiBackupToken = env.CHECK_API_BACKUP_TOKEN || '';
+    config.checkApiToken = env.CHECK_API_TOKEN || DEFAULT_CONFIG.checkApiToken;
+    config.checkApiBackup = env.CHECK_API_BACKUP || DEFAULT_CONFIG.checkApiBackup;
+    config.checkApiBackupToken = env.CHECK_API_BACKUP_TOKEN || DEFAULT_CONFIG.checkApiBackupToken;
     config.dohApi = env.DOH_API || DEFAULT_CONFIG.dohApi;
     config.ipInfoEnabled = env.IP_INFO_ENABLED === 'true';
     config.ipInfoApi = env.IP_INFO_API || DEFAULT_CONFIG.ipInfoApi;
